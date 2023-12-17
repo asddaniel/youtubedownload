@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google-ai/generativelanguage": "^2.0.0",
+    "@google/generative-ai": "^0.1.2",
     "@nextui-org/react": "^2.2.9",
     "file-saver": "^2.0.5",
     "framer-motion": "^10.16.14",

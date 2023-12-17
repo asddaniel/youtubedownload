@@ -5,6 +5,9 @@ import { Input } from '@nextui-org/react'
 import ReactPlayer from 'react-player';
 import { saveAs } from 'file-saver';
 import { toast, Toaster } from 'sonner';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+
 
 
 
@@ -14,6 +17,22 @@ import './App.css'
 // Import YOUTUBE_DATA_KEY from env file using vite
 const api_key = import.meta.env.VITE_YOUTUBE_DATA_KEY;
 const api_url = import.meta.env.VITE_API_URL;
+const generative_api_key = import.meta.env.VITE_API_GOOGLE_GENERATIVE_KEY
+const genAI = new GoogleGenerativeAI(generative_api_key);
+
+// ...
+
+async function run() {
+  // For text-only input, use the gemini-pro model
+  const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+
+  const prompt = "Write a story about a magic backpack and translate it in french."
+
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
+  const text = response.text();
+  console.log(text);
+}
 
 
 
@@ -60,7 +79,7 @@ function App() {
       // .catch(err => console.log(err))
     }
     useEffect(() => {
-      
+         run()
      if(medialink.length==0) return
     console.log(medialink)
     toast.promise(
