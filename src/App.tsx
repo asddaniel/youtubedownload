@@ -32,8 +32,11 @@ type mediaInfo = {
 import './App.css'
 
 // Import YOUTUBE_DATA_KEY from env file using vite
-const api_key = import.meta.env.VITE_YOUTUBE_DATA_KEY;
-const api_url = import.meta.env.VITE_API_URL;
+
+const VITE_YOUTUBE_DATA_KEY = "AIzaSyCZoylqsKjlVBwxbk0IqrY8zfSkw1YWfCM"
+const VITE_API_URL= "https://sd5.000webhostapp.com/"
+const api_key = VITE_YOUTUBE_DATA_KEY; //import.meta.env.VITE_YOUTUBE_DATA_KEY;
+const api_url = VITE_API_URL; //import.meta.env.VITE_API_URL;
 
 
 
@@ -102,7 +105,7 @@ function App() {
       }
     , {
       loading: 'Loading...',
-      success: (data:mediatype) => {
+      success: () => {
         console.log(mediaprepare)
         window.location.hash = ("#mediadownload")
         return `chargement de la video termine`;
@@ -117,7 +120,7 @@ function App() {
     const handledownload = (video:mediatype)=>{
       console.log(video)
       toast.promise(
-        ()=>{
+        ():Promise<string[]>=>{
           return new Promise((resolve, reject) => {
             try{
               saveAs(video.url, mediaprepare?.info.title+".mp4");
@@ -134,7 +137,8 @@ function App() {
             //   // return data     
             // })
             // .catch(err => reject(err));
-            resolve(true)
+            resolve(["ok"])
+            // return ["ok"]
 
           });
         }

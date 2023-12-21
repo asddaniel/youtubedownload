@@ -1,5 +1,6 @@
 {
   "name": "portfolionew",
+  "homepage": "https://asddaniel.github.io/youtubedownload",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +8,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@google-ai/generativelanguage": "^2.0.0",
@@ -15,6 +17,7 @@
     "@nextui-org/react": "^2.2.9",
     "file-saver": "^2.0.5",
     "framer-motion": "^10.16.14",
+    "gh-pages": "^6.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-player": "^2.13.0",
